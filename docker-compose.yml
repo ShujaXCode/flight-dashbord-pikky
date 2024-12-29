@@ -1,0 +1,32 @@
+version: "3"
+services:
+  nextjs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"  # Exposes port 3000 for the Next.js app
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb+srv://magnus:SHuja4646@cluster0.i3anulp.mongodb.net/pikky  # MongoDB URI for Next.js
+      - JWT_SECRET=ysdasddas  # JWT Secret for Next.js
+    depends_on:
+      - api  # Ensures the API service is up before Next.js starts
+    networks:
+      - app-network  # Ensures both services are on the same network
+
+  api:
+    image: node:18
+    container_name: api-service
+    working_dir: /app
+    volumes:
+      - ./api:/app  # Mounts the api directory from host to container
+    ports:
+      - "4000:4000"  # Exposes port 4000 for the API service
+    command: npm run start  # Starts the backend server
+    networks:
+      - app-network  # Ensures both services are on the same network
+
+networks:
+  app-network:  # Defines a custom network for better communication between containers
+    driver: bridge

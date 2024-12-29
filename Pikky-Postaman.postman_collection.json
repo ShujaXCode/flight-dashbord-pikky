@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "2d8ab0f6-891d-41ea-a7c9-4909a117dcdd",
+		"name": "Pikky-Postaman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27882597"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\" :\"admin@gmail.com\" , \"password\" :\"1234567890\" , \"role\" :\"admin\"}\n\n// role : \"admin\"  | user",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/create-user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"create-user"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
